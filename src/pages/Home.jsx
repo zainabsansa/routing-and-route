@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoMoon, IoSunny } from "react-icons/io5";
 
 function Home() {
+  const [dark, setDark] = useState(false);
+
+  function handleDarkMode() {
+    setDark(!dark);
+    document.body.classList.toggle('dark-mode')
+  }
   return (
     <div>
       <p>Home Page</p>
 
-      <button></button>
+      <button onClick={handleDarkMode}>
+        {!dark ? <IoSunny/>: <IoMoon/>}
+      </button>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum culpa
         totam possimus quidem error ex maxime vero! Molestias beatae aspernatur
@@ -16,9 +25,9 @@ function Home() {
         dolore harum vel!
       </p>
 
-      <div style={{ display: "flex", gap: "20px"}}>
-        <Link to='/about'>About</Link>
-        <Link to='/contact'>Contact</Link>
+      <div style={{ display: "flex", gap: "20px" }}>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
       </div>
     </div>
   );
